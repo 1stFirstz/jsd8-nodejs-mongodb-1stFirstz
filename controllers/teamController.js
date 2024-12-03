@@ -7,10 +7,12 @@ export const getTeamMembers = async (req, res) => {
             res.status(400).json({ message: "Team ID is required" });
             return;
         }
+
         const members = await teamModel.findById(id);
         if (!members) {
             res.status(404).json({ message: "Team members not found" });
             return;
+
         }
         res.json(members)
     } catch (error) {
